@@ -9,12 +9,12 @@ import javax.persistence.*;
 import java.util.Date;
 
 @Entity
-@Getter
-@Setter
 @AllArgsConstructor
 @NoArgsConstructor
+@Getter
+@Setter
 @Table(name = "liked", schema = "cms")
-public class Liked extends BaseEntity {
+public class Liked {
 
     @EmbeddedId
     private LikedPk likedPk;
