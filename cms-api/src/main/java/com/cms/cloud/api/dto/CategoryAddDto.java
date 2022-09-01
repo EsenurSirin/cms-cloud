@@ -1,5 +1,6 @@
 package com.cms.cloud.api.dto;
 
+import com.cms.cloud.api.validation.UniqueCategoryName;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -16,7 +17,7 @@ import javax.validation.constraints.NotNull;
 public class CategoryAddDto {
 
     @NotNull
-    //@UniqueCategoryName
+    @UniqueCategoryName
     private String name;
 
     @NotEmpty

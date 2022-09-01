@@ -1,6 +1,5 @@
 package com.cms.cloud.api.dto;
-
-//import com.cms.cloud.api.validation.UniqueArticleTag;
+import com.cms.cloud.api.validation.UniqueArticleTag;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -12,7 +11,7 @@ import javax.validation.constraints.NotEmpty;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-//@UniqueArticleTag
+@UniqueArticleTag
 public class ArticleTagAddDto {
 
     @NotEmpty

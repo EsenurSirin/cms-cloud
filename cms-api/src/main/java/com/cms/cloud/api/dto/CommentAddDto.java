@@ -2,6 +2,7 @@ package com.cms.cloud.api.dto;
 
 //import com.cms.cloud.api.validation.UniqueComment;
 
+import com.cms.cloud.api.validation.UniqueComment;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -15,7 +16,7 @@ import javax.validation.constraints.NotNull;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-//@UniqueComment
+@UniqueComment
 public class CommentAddDto {
 
     @NotEmpty

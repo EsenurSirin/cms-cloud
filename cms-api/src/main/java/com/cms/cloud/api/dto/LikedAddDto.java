@@ -1,5 +1,6 @@
 package com.cms.cloud.api.dto;
 
+import com.cms.cloud.api.validation.UniqueLiked;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -11,7 +12,7 @@ import javax.validation.constraints.NotEmpty;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-//@UniqueLiked
+@UniqueLiked
 public class LikedAddDto {
 
     @NotEmpty

@@ -1,5 +1,6 @@
 package com.cms.cloud.api.dto;
 
+import com.cms.cloud.api.validation.UniqueArticleName;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -22,7 +23,7 @@ public class ArticleAddDto {
 
     @NotEmpty
     @NotBlank
-    //@UniqueArticleName
+    @UniqueArticleName
     private String title;
 
     @NotEmpty
