@@ -13,8 +13,6 @@ import java.util.Date;
 @NoArgsConstructor
 public class UserSearchDto {
 
-    private String userId;
-
     private String firstName;
 
     private String lastName;

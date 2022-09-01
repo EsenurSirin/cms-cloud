@@ -13,7 +13,7 @@ import java.util.Date;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-@Table(name = "user", schema = "cms")
+@Table(name = "users", schema = "cms")
 public class User extends BaseEntity {
 
     @Column(name = "first_name")

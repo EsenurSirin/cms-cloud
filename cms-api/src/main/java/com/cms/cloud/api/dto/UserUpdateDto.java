@@ -9,8 +9,8 @@ import java.util.Date;
 
 @Getter
 @Setter
-@AllArgsConstructor
 @NoArgsConstructor
+@AllArgsConstructor
 public class UserUpdateDto {
 
     private String userId;
