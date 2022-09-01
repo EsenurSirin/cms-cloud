@@ -1,0 +1,246 @@
+-- Table: cms.article
+
+-- DROP TABLE IF EXISTS cms.article;
+
+CREATE TABLE IF NOT EXISTS cms.article
+(
+    id character varying(255) COLLATE pg_catalog."default" NOT NULL,
+    category_id character varying(255) COLLATE pg_catalog."default" NOT NULL,
+    content character varying(255) COLLATE pg_catalog."default" NOT NULL,
+    created_at date NOT NULL,
+    modified_at date,
+    title character varying(255) COLLATE pg_catalog."default" NOT NULL,
+    user_id character varying(255) COLLATE pg_catalog."default",
+    CONSTRAINT article_pk PRIMARY KEY (id),
+    CONSTRAINT article_category_id_fk FOREIGN KEY (category_id)
+        REFERENCES cms.category (id) MATCH SIMPLE
+        ON UPDATE NO ACTION
+        ON DELETE NO ACTION,
+    CONSTRAINT article_users_id_fk FOREIGN KEY (user_id)
+        REFERENCES cms.users (id) MATCH SIMPLE
+        ON UPDATE NO ACTION
+        ON DELETE NO ACTION
+)
+
+TABLESPACE pg_default;
+
+ALTER TABLE IF EXISTS cms.article
+    OWNER to postgres;
+
+
+
+-- Table: cms.article_tag
+
+-- DROP TABLE IF EXISTS cms.article_tag;
+
+CREATE TABLE IF NOT EXISTS cms.article_tag
+(
+    id character varying(255) COLLATE pg_catalog."default" NOT NULL,
+    article_id character varying(255) COLLATE pg_catalog."default" NOT NULL,
+    tag_id character varying(255) COLLATE pg_catalog."default" NOT NULL,
+    created_at date NOT NULL,
+    modified_at date,
+    CONSTRAINT article_tag_pk PRIMARY KEY (id),
+    CONSTRAINT article_tag_article_id_fk FOREIGN KEY (article_id)
+        REFERENCES cms.article (id) MATCH SIMPLE
+        ON UPDATE NO ACTION
+        ON DELETE NO ACTION,
+    CONSTRAINT article_tag_tag_id_fk FOREIGN KEY (tag_id)
+        REFERENCES cms.tag (id) MATCH SIMPLE
+        ON UPDATE NO ACTION
+        ON DELETE NO ACTION
+)
+
+TABLESPACE pg_default;
+
+ALTER TABLE IF EXISTS cms.article_tag
+    OWNER to postgres;
+-- Index: article_tag_id_uindex
+
+-- DROP INDEX IF EXISTS cms.article_tag_id_uindex;
+
+CREATE UNIQUE INDEX IF NOT EXISTS article_tag_id_uindex
+    ON cms.article_tag USING btree
+    (id COLLATE pg_catalog."default" ASC NULLS LAST)
+    TABLESPACE pg_default;
+
+
+
+-- Table: cms.category
+
+-- DROP TABLE IF EXISTS cms.category;
+
+CREATE TABLE IF NOT EXISTS cms.category
+(
+    id character varying(255) COLLATE pg_catalog."default" NOT NULL,
+    name character varying(255) COLLATE pg_catalog."default" NOT NULL,
+    description character varying(255) COLLATE pg_catalog."default" NOT NULL,
+    created_at date NOT NULL DEFAULT CURRENT_DATE,
+    modified_at date DEFAULT CURRENT_DATE,
+    CONSTRAINT pk_category PRIMARY KEY (id)
+)
+
+TABLESPACE pg_default;
+
+ALTER TABLE IF EXISTS cms.category
+    OWNER to postgres;
+-- Index: category_id_uindex
+
+-- DROP INDEX IF EXISTS cms.category_id_uindex;
+
+CREATE UNIQUE INDEX IF NOT EXISTS category_id_uindex
+    ON cms.category USING btree
+    (id COLLATE pg_catalog."default" ASC NULLS LAST)
+    TABLESPACE pg_default;
+
+
+-- Table: cms.comment
+
+-- DROP TABLE IF EXISTS cms.comment;
+
+CREATE TABLE IF NOT EXISTS cms.comment
+(
+    id character varying(255) COLLATE pg_catalog."default" NOT NULL,
+    article_id character varying(255) COLLATE pg_catalog."default" NOT NULL,
+    content character varying(255) COLLATE pg_catalog."default" NOT NULL,
+    created_at date NOT NULL,
+    modified_at date,
+    user_id character varying(255) COLLATE pg_catalog."default" NOT NULL,
+    CONSTRAINT comment_pk PRIMARY KEY (id),
+    CONSTRAINT comment_article_id_fk FOREIGN KEY (article_id)
+        REFERENCES cms.article (id) MATCH SIMPLE
+        ON UPDATE NO ACTION
+        ON DELETE NO ACTION,
+    CONSTRAINT comment_users_id_fk FOREIGN KEY (user_id)
+        REFERENCES cms.users (id) MATCH SIMPLE
+        ON UPDATE NO ACTION
+        ON DELETE NO ACTION
+)
+
+TABLESPACE pg_default;
+
+ALTER TABLE IF EXISTS cms.comment
+    OWNER to postgres;
+-- Index: comment_id_uindex
+
+-- DROP INDEX IF EXISTS cms.comment_id_uindex;
+
+CREATE UNIQUE INDEX IF NOT EXISTS comment_id_uindex
+    ON cms.comment USING btree
+    (id COLLATE pg_catalog."default" ASC NULLS LAST)
+    TABLESPACE pg_default;
+
+
+-- Table: cms.liked
+
+-- DROP TABLE IF EXISTS cms.liked;
+
+CREATE TABLE IF NOT EXISTS cms.liked
+(
+    article_id character varying(255) COLLATE pg_catalog."default" NOT NULL,
+    user_id character varying(255) COLLATE pg_catalog."default" NOT NULL,
+    created_at date NOT NULL,
+    CONSTRAINT liked_article_id_fk FOREIGN KEY (article_id)
+        REFERENCES cms.article (id) MATCH SIMPLE
+        ON UPDATE NO ACTION
+        ON DELETE NO ACTION,
+    CONSTRAINT liked_users_id_fk FOREIGN KEY (user_id)
+        REFERENCES cms.users (id) MATCH SIMPLE
+        ON UPDATE NO ACTION
+        ON DELETE NO ACTION
+)
+
+TABLESPACE pg_default;
+
+ALTER TABLE IF EXISTS cms.liked
+    OWNER to postgres;
+
+
+-- Table: cms.log
+
+-- DROP TABLE IF EXISTS cms.log;
+
+CREATE TABLE IF NOT EXISTS cms.log
+(
+    id character varying(255) COLLATE pg_catalog."default" NOT NULL,
+    username character varying(255) COLLATE pg_catalog."default",
+    operation character varying(255) COLLATE pg_catalog."default",
+    "time" character varying(255) COLLATE pg_catalog."default",
+    method character varying(255) COLLATE pg_catalog."default",
+    params character varying(255) COLLATE pg_catalog."default",
+    ip character varying(255) COLLATE pg_catalog."default",
+    created_at date,
+    "logType" character varying(255) COLLATE pg_catalog."default",
+    CONSTRAINT log_pk PRIMARY KEY (id)
+)
+
+TABLESPACE pg_default;
+
+ALTER TABLE IF EXISTS cms.log
+    OWNER to postgres;
+-- Index: log_id_uindex
+
+-- DROP INDEX IF EXISTS cms.log_id_uindex;
+
+CREATE UNIQUE INDEX IF NOT EXISTS log_id_uindex
+    ON cms.log USING btree
+    (id COLLATE pg_catalog."default" ASC NULLS LAST)
+    TABLESPACE pg_default;
+
+-- Table: cms.tag
+
+-- DROP TABLE IF EXISTS cms.tag;
+
+CREATE TABLE IF NOT EXISTS cms.tag
+(
+    id character varying(255) COLLATE pg_catalog."default" NOT NULL,
+    name character varying(255) COLLATE pg_catalog."default" NOT NULL,
+    created_at date NOT NULL,
+    modified_at date,
+    CONSTRAINT tag_pk PRIMARY KEY (id)
+)
+
+TABLESPACE pg_default;
+
+ALTER TABLE IF EXISTS cms.tag
+    OWNER to postgres;
+-- Index: tag_id_uindex
+
+-- DROP INDEX IF EXISTS cms.tag_id_uindex;
+
+CREATE UNIQUE INDEX IF NOT EXISTS tag_id_uindex
+    ON cms.tag USING btree
+    (id COLLATE pg_catalog."default" ASC NULLS LAST)
+    TABLESPACE pg_default;
+
+-- Table: cms.users
+
+-- DROP TABLE IF EXISTS cms.users;
+
+CREATE TABLE IF NOT EXISTS cms.users
+(
+    id character varying(255) COLLATE pg_catalog."default" NOT NULL,
+    email character varying(255) COLLATE pg_catalog."default" NOT NULL,
+    first_name character varying(255) COLLATE pg_catalog."default" NOT NULL,
+    last_name character varying(255) COLLATE pg_catalog."default" NOT NULL,
+    password character varying(255) COLLATE pg_catalog."default" NOT NULL,
+    user_name character varying(255) COLLATE pg_catalog."default" NOT NULL,
+    date_of_birth date NOT NULL,
+    telephone character varying(255) COLLATE pg_catalog."default",
+    created_at date NOT NULL,
+    modified_at date,
+    CONSTRAINT user_pk PRIMARY KEY (id)
+)
+
+TABLESPACE pg_default;
+
+ALTER TABLE IF EXISTS cms.users
+    OWNER to postgres;
+-- Index: user_id_uindex
+
+-- DROP INDEX IF EXISTS cms.user_id_uindex;
+
+CREATE UNIQUE INDEX IF NOT EXISTS user_id_uindex
+    ON cms.users USING btree
+    (id COLLATE pg_catalog."default" ASC NULLS LAST)
+    TABLESPACE pg_default;

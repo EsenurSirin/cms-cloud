@@ -1,11 +1,12 @@
 package com.cms.cloud.api.controller;
 
+import com.cms.cloud.api.aop.Log;
+import com.cms.cloud.api.aop.LogType;
+import com.cms.cloud.api.service.UserService;
 import com.cms.cloud.api.dto.UserAddDto;
 import com.cms.cloud.api.dto.UserSearchDto;
 import com.cms.cloud.api.dto.UserUpdateDto;
-import com.cms.cloud.api.service.UserService;
 import com.cms.cloud.dao.entities.User;
-import lombok.extern.java.Log;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -19,7 +20,7 @@ import javax.validation.constraints.NotEmpty;
 import java.util.List;
 
 @RestController
-@RequestMapping("/api/user")
+@RequestMapping("api/user")
 public class UserController {
 
     @Autowired
@@ -31,20 +32,20 @@ public class UserController {
         return new ResponseEntity(HttpStatus.OK);
     }
 
-    @PutMapping("/update-user")
-    public ResponseEntity update(@RequestBody @Valid UserUpdateDto userUpdateDto) {
-        userService.updateUser(userUpdateDto);
-        return new ResponseEntity(HttpStatus.OK);
-    }
-
     @DeleteMapping("/delete-user")
     public ResponseEntity delete(@RequestBody @Valid @NotEmpty String id) {
         userService.deleteUser(id);
         return new ResponseEntity(HttpStatus.OK);
     }
 
+    @PutMapping("/update-user")
+    public ResponseEntity update(@RequestBody @Valid UserUpdateDto userUpdateDto) {
+        userService.updateUser(userUpdateDto);
+        return new ResponseEntity(HttpStatus.OK);
+    }
+
     @GetMapping("/list-user")
-    //@Log(LogType.READ)
+    @Log(LogType.READ)
     public ResponseEntity<List<User>> getAll() {
         return ResponseEntity.ok(userService.getAllUser());
     }
