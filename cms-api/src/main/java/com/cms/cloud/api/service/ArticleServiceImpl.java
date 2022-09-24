@@ -69,6 +69,7 @@ public class ArticleServiceImpl implements ArticleService {
         return articleRepository.findAll();
     }
 
+
     @Override
     public List<Article> searchArticleAll(ArticleSearchDto articleSearchDto) {
 

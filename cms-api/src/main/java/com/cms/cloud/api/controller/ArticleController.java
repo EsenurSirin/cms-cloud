@@ -47,7 +47,6 @@ public class ArticleController {
         return ResponseEntity.ok(articleService.getAllArticle());
     }
 
-
     @PostMapping(value = "/search-article-all",
             consumes = MediaType.APPLICATION_JSON_VALUE,
             produces = MediaType.APPLICATION_JSON_VALUE)
