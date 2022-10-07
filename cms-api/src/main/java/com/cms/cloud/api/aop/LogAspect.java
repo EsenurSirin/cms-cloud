@@ -34,10 +34,8 @@ public class LogAspect {
     @Around("myPointcut(com.cms.cloud.api.aop.Log)")
     public void applicationLogger(ProceedingJoinPoint pjp) throws Throwable {
 
-        String ipAddress = HttpUtil.getClientIpAddressIfServletRequestExist();
-
         LogAddDto logAddDto = new LogAddDto();
-        logAddDto.setIp(ipAddress);
+        logAddDto.setIp(HttpUtil.getClientIpAddressIfServletRequestExist());
         logAddDto.setCreated_at(new Date());
         logAddDto.setUserName("default-log");
         logAddDto.setLogType("integer");
