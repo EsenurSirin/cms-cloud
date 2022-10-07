@@ -2,6 +2,7 @@ package com.cms.cloud.api.aop;
 
 import com.cms.cloud.api.service.LogService;
 import com.cms.cloud.api.dto.LogAddDto;
+import com.cms.cloud.core.util.HttpUtil;
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.Around;
 import org.aspectj.lang.annotation.Aspect;
@@ -33,10 +34,10 @@ public class LogAspect {
     @Around("myPointcut(com.cms.cloud.api.aop.Log)")
     public void applicationLogger(ProceedingJoinPoint pjp) throws Throwable {
 
-        HttpServletRequest request = ((ServletRequestAttributes) RequestContextHolder.getRequestAttributes()).getRequest();
+        String ipAddress = HttpUtil.getClientIpAddressIfServletRequestExist();
 
         LogAddDto logAddDto = new LogAddDto();
-        logAddDto.setIp(request.getRemoteAddr());
+        logAddDto.setIp(ipAddress);
         logAddDto.setCreated_at(new Date());
         logAddDto.setUserName("default-log");
         logAddDto.setLogType("integer");

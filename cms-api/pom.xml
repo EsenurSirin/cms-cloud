@@ -21,6 +21,10 @@
             <artifactId>cms-dao</artifactId>
         </dependency>
         <dependency>
+            <groupId>com.cms.cloud</groupId>
+            <artifactId>cms-core</artifactId>
+        </dependency>
+        <dependency>
             <groupId>org.postgresql</groupId>
             <artifactId>postgresql</artifactId>
             <scope>runtime</scope>
