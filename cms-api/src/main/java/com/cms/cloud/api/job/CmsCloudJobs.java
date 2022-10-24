@@ -1,10 +1,10 @@
-package com.cms.cloud.dao.job;
+package com.cms.cloud.api.job;
 
 import org.springframework.scheduling.annotation.Scheduled;
 
 import java.time.LocalDate;
 
-public class ScheduledJob {
+public class CmsCloudJobs {
 
     @Scheduled(cron = "0 */5 * ? * *")
     public void runEvey5Minutes() {
