@@ -1,4 +1,4 @@
-package com.cms.cloud.api.job;
+package com.cms.cloud.api.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
