@@ -7,7 +7,7 @@ import org.springframework.stereotype.Component;
 import java.time.LocalDateTime;
 
 @Component
-public class CmsCloudJobs {
+public class CmsCloudJob {
     @Autowired
     private JavaMailSender emailSender;
 
