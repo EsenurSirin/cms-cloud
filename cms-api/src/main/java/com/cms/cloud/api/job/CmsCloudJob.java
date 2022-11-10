@@ -15,8 +15,8 @@ public class CmsCloudJob {
     public void sendEmailEvery5Minutes() {
         //email kodu başlangıç
         SimpleMailMessage message = new SimpleMailMessage();
-        message.setFrom("ese.siri@gmail.com");
-        message.setTo("ese.siri@gmail.com");
+        message.setFrom("enter your e-mail address");
+        message.setTo("enter your e-mail address");
         message.setSubject("test emaili");
         message.setText("test içerik");
         emailSender.send(message);
