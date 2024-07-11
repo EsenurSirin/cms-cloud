@@ -5,8 +5,8 @@ import com.cms.cloud.dao.entities.ArticleTag;
 import com.cms.cloud.dao.repository.ArticleTagRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 
-import javax.validation.ConstraintValidator;
-import javax.validation.ConstraintValidatorContext;
+import jakarta.validation.ConstraintValidator;
+import jakarta.validation.ConstraintValidatorContext;
 import java.util.List;
 
 public class UniqueArticleTagValidator implements ConstraintValidator<UniqueArticleTag, ArticleTagAddDto> {

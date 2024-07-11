@@ -5,8 +5,8 @@ import com.cms.cloud.dao.entities.Comment;
 import com.cms.cloud.dao.repository.CommentRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 
-import javax.validation.ConstraintValidator;
-import javax.validation.ConstraintValidatorContext;
+import jakarta.validation.ConstraintValidator;
+import jakarta.validation.ConstraintValidatorContext;
 import java.util.List;
 
 public class UniqueCommentValidator implements ConstraintValidator<UniqueComment, CommentAddDto> {

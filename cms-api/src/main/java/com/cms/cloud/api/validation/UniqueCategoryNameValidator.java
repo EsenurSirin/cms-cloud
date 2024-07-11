@@ -4,8 +4,8 @@ import com.cms.cloud.dao.entities.Category;
 import com.cms.cloud.dao.repository.CategoryRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 
-import javax.validation.ConstraintValidator;
-import javax.validation.ConstraintValidatorContext;
+import jakarta.validation.ConstraintValidator;
+import jakarta.validation.ConstraintValidatorContext;
 import java.util.List;
 
 public class UniqueCategoryNameValidator implements ConstraintValidator<UniqueCategoryName, String> {

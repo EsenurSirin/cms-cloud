@@ -2,7 +2,7 @@ package com.cms.cloud.api.dto;
 
 import lombok.*;
 
-import javax.validation.constraints.*;
+import jakarta.validation.constraints.*;
 import java.util.Date;
 
 @Getter

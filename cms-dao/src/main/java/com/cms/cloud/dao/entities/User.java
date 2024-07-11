@@ -5,7 +5,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import javax.persistence.*;
+import jakarta.persistence.*;
 import java.util.Date;
 
 @Entity
@@ -13,8 +13,8 @@ import java.util.Date;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-@Table(name = "users", schema = "cms")
-public class User extends BaseEntity {
+@Table(name = "users", schema = "public")
+public class  User extends BaseEntity {
 
     @Column(name = "first_name")
     private String firstName;

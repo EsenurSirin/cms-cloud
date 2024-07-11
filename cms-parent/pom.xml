@@ -8,7 +8,7 @@
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
-        <version>2.6.4</version>
+        <version>3.3.1</version>
         <relativePath/>
     </parent>
 
@@ -24,15 +24,15 @@
         <java.version>17</java.version>
         <maven.compiler.source>17</maven.compiler.source>
         <maven.compiler.target>17</maven.compiler.target>
-        <spring-boot.version>2.6.4</spring-boot.version>
-        <spring-cloud.version>2021.0.1</spring-cloud.version>
+        <spring-boot.version>3.3.1</spring-boot.version>
+        <spring-cloud.version>2023.0.2</spring-cloud.version>
         <src.java.directory>src/main/java/</src.java.directory>
         <src.java.resources.directory>src/main/resources</src.java.resources.directory>
         <encoding>UTF-8</encoding>
         <project.build.sourceEncoding>${encoding}</project.build.sourceEncoding>
         <project.reporting.outputEncoding>${encoding}</project.reporting.outputEncoding>
         <project.resources.sourceEncoding>${encoding}</project.resources.sourceEncoding>
-        <lombok.version>1.18.24</lombok.version>
+        <lombok.version>1.18.34</lombok.version>
     </properties>
 
     <!-- DEPENDENCY MANAGEMENT-->

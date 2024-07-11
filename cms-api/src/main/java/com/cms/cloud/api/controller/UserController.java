@@ -15,8 +15,8 @@ import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import javax.validation.Valid;
-import javax.validation.constraints.NotEmpty;
+import jakarta.validation.Valid;
+import jakarta.validation.constraints.NotEmpty;
 import java.util.List;
 
 @RestController
@@ -29,7 +29,7 @@ public class UserController {
     @PostMapping("/add-user")
     public ResponseEntity add(@RequestBody @Valid UserAddDto userAddDto) {
         userService.addUser(userAddDto);
-        return new ResponseEntity(HttpStatus.OK);
+        return ResponseEntity.ok("{\"message\": \"Category added successfully\"}");
     }
 
     @DeleteMapping("/delete-user")

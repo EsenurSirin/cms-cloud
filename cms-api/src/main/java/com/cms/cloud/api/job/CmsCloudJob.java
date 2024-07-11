@@ -20,7 +20,7 @@ public class CmsCloudJob {
     @Value("${email.to}")
     private String emailTo;
 
-    @Scheduled(cron = "0 */1 * ? * *")
+   // @Scheduled(cron = "0 */1 * ? * *")
     public void sendEmailEvery5Minutes() {
         //email kodu başlangıç
         SimpleMailMessage message = new SimpleMailMessage();
